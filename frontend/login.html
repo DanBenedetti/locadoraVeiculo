@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaCar - Entrar</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <main class="auth-wrap">
+        <section class="auth-side">
+            <a class="brand" href="login.html">
+                <span class="brand-mark"><i class="fa-solid fa-steering-wheel"></i></span>
+                <span class="brand-name">Loca<strong>Car</strong></span>
+            </a>
+            <div class="auth-side-text">
+                <span class="hero-kicker">Área restrita</span>
+                <h1>Gestão de frota para a equipe da locadora</h1>
+                <p>Entre com seu e-mail e senha para cadastrar veículos, atualizar disponibilidade e consultar a auditoria.</p>
+            </div>
+            <div class="auth-side-items">
+                <span><i class="fa-solid fa-car-side"></i> Frota em tempo real</span>
+                <span><i class="fa-solid fa-clock-rotate-left"></i> Auditoria de operações</span>
+                <span><i class="fa-solid fa-shield-halved"></i> Senhas protegidas com Bcrypt</span>
+            </div>
+        </section>
+
+        <section class="auth-card">
+            <div class="panel-head">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Acessar o sistema</span>
+            </div>
+            <form id="formLogin" class="auth-form" autocomplete="on">
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required
+                           placeholder="voce@exemplo.com" autocomplete="username">
+                </div>
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required
+                           placeholder="Sua senha" autocomplete="current-password">
+                </div>
+                <p class="auth-error" id="loginErro" hidden></p>
+                <button type="submit" class="btn-primary" id="btnEntrar">
+                    <i class="fa-solid fa-right-to-bracket"></i> Entrar
+                </button>
+            </form>
+            <p class="auth-hint">
+                <i class="fa-solid fa-circle-info"></i>
+                Não tem acesso? Peça ao responsável para criar seu usuário de funcionário.
+            </p>
+        </section>
+    </main>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>

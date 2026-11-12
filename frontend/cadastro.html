@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaCar - Criar Cadastro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <main class="auth-wrap auth-wrap-center">
+        <a class="brand" href="/login.html">
+            <span class="brand-mark"><i class="fa-solid fa-steering-wheel"></i></span>
+            <span class="brand-name">Loca<strong>Car</strong></span>
+        </a>
+
+        <section class="auth-card">
+            <div class="panel-head">
+                <i class="fa-solid fa-user-plus"></i>
+                <span id="cadastroTitulo">Criar novo cadastro</span>
+            </div>
+            <form id="formCadastro" class="auth-form" autocomplete="on">
+                <div class="field">
+                    <label for="nome">Nome do funcionário</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Ex: Ana Souza">
+                </div>
+                <div class="field">
+                    <label for="documento">CPF ou CNPJ</label>
+                    <input type="text" id="documento" name="documento" required
+                           inputmode="numeric" placeholder="Somente números" autocomplete="off">
+                </div>
+                <div class="field">
+                    <label for="email">E-mail (usado no login)</label>
+                    <input type="email" id="email" name="email" required placeholder="voce@exemplo.com" autocomplete="off">
+                </div>
+                <div class="field" id="campoCargo" hidden>
+                    <label for="cargo">Cargo</label>
+                    <select id="cargo" name="cargo">
+                        <option value="Atendente" selected>Atendente</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Mecânico">Mecânico</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                    <small class="field-hint">Administrador pode cadastrar, editar e excluir funcionários.</small>
+                </div>
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required minlength="6"
+                           placeholder="Mínimo de 6 caracteres" autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="confirmarSenha">Confirmar senha</label>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" required minlength="6"
+                           placeholder="Repita a senha" autocomplete="new-password">
+                </div>
+                <p class="auth-error" id="cadastroErro" hidden></p>
+                <button type="submit" class="btn-primary" id="btnCadastrar">
+                    <i class="fa-solid fa-user-plus"></i> Criar cadastro
+                </button>
+            </form>
+            <div class="auth-footer">
+                <span class="auth-footer-text" id="cadastroFooterTexto">Já tem cadastro?</span>
+                <a class="auth-footer-link" id="cadastroFooterLink" href="/login.html">Entrar no sistema</a>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/cadastro.js"></script>
+</body>
+</html>

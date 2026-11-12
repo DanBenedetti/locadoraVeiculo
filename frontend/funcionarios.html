@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaCar - Funcionários</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><i class="fa-solid fa-steering-wheel"></i></span>
+                <span class="brand-name">Loca<strong>Car</strong></span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-car-side"></i> Frota</a>
+                <a href="logs.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Auditoria</a>
+                <a href="funcionarios.html" class="nav-link active"><i class="fa-solid fa-users"></i> Funcionários</a>
+            </nav>
+            <div class="user-box">
+                <span class="user-avatar"><i class="fa-solid fa-user-tie"></i></span>
+                <span class="user-info">
+                    <span class="user-name" id="usuarioNome">...</span>
+                    <span class="user-cargo" id="usuarioCargo">Funcionário</span>
+                </span>
+                <button type="button" class="btn-logout" id="btnLogout" title="Sair do sistema">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero hero-slim">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <span class="hero-kicker">Gestão de acesso</span>
+                <h1>Funcionários cadastrados no sistema</h1>
+                <p>Lista, edita e exclui os acessos do time. Somente gestores (nível 3) podem excluir.</p>
+            </div>
+        </div>
+        <div class="hero-road" aria-hidden="true"></div>
+    </section>
+
+    <main class="layout layout-single">
+        <section class="content">
+            <div class="content-head">
+                <h2><i class="fa-solid fa-users"></i> Lista de funcionários</h2>
+                <div class="content-actions">
+                    <span class="counter" id="totalFuncionarios">0 cadastros</span>
+                    <a class="btn-primary btn-link" id="btnNovoCadastro" href="/cadastro" hidden>
+                        <i class="fa-solid fa-user-plus"></i> Novo cadastro
+                    </a>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table-logs">
+                        <thead>
+                            <tr>
+                                <th class="col-num">#</th>
+                                <th class="col-nome">Nome</th>
+                                <th class="col-documento">CPF/CNPJ</th>
+                                <th class="col-email">E-mail</th>
+                                <th class="col-cargo">Cargo</th>
+                                <th class="col-nivel">Nível</th>
+                                <th class="col-acoes">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaFuncionarios">
+                            <!-- Os dados do MySQL aparecem via js/funcionarios.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="auth-hint permissoes-aviso" id="permissoesAviso">
+                <i class="fa-solid fa-circle-info"></i>
+                <span id="permissoesTexto">Carregando permissões...</span>
+            </p>
+        </section>
+    </main>
+
+    <dialog id="modalEdicao" class="modal" aria-labelledby="modalTitulo">
+        <section class="panel">
+            <div class="panel-head" id="modalTitulo">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Editar cadastro</span>
+            </div>
+            <form id="formEdicao" class="auth-form">
+                <div class="field">
+                    <label for="funcNome">Nome</label>
+                    <input type="text" id="funcNome" required placeholder="Nome completo">
+                </div>
+                <div class="field">
+                    <label for="funcDocumento">CPF/CNPJ</label>
+                    <input type="text" id="funcDocumento" disabled>
+                </div>
+                <div class="field">
+                    <label for="funcEmail">E-mail (usado no login)</label>
+                    <input type="email" id="funcEmail" required placeholder="voce@exemplo.com">
+                </div>
+                <div class="field">
+                    <label for="funcCargo">Cargo</label>
+                    <select id="funcCargo">
+                        <option value="Atendente">Atendente</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Mecânico">Mecânico</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                    <small class="field-hint">O cargo define a permissão: Administrador gerencia funcionários.</small>
+                </div>
+                <div class="field">
+                    <label for="funcSenha">Nova senha (deixe em branco para manter)</label>
+                    <input type="password" id="funcSenha" minlength="6" placeholder="Mínimo de 6 caracteres" autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="funcConfirmar">Confirmar nova senha</label>
+                    <input type="password" id="funcConfirmar" minlength="6" placeholder="Repita a senha" autocomplete="new-password">
+                </div>
+                <p class="auth-error" id="modalErro" hidden></p>
+                <div class="modal-actions">
+                    <button type="button" class="btn-edit" id="btnCancelarEdicao">
+                        <i class="fa-solid fa-xmark"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-check"></i> Salvar alterações
+                    </button>
+                </div>
+            </form>
+        </section>
+    </dialog>
+
+    <footer class="footer">
+        <p><i class="fa-solid fa-steering-wheel"></i> <strong>LocaCar</strong> &copy; 2026 — Gestão de locação com MySQL &amp; MongoDB.</p>
+    </footer>
+
+    <script type="module" src="js/funcionarios.js"></script>
+</body>
+</html>

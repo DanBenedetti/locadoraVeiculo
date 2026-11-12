@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaCar - Auditoria</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><i class="fa-solid fa-steering-wheel"></i></span>
+                <span class="brand-name">Loca<strong>Car</strong></span>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-car-side"></i> Frota</a>
+                <a href="logs.html" class="nav-link active"><i class="fa-solid fa-clock-rotate-left"></i> Auditoria</a>
+                <a href="funcionarios.html" class="nav-link"><i class="fa-solid fa-users"></i> Funcionários</a>
+            </nav>
+            <div class="user-box">
+                <span class="user-avatar"><i class="fa-solid fa-user-tie"></i></span>
+                <span class="user-info">
+                    <span class="user-name" id="usuarioNome">...</span>
+                    <span class="user-cargo" id="usuarioCargo">Funcionário</span>
+                </span>
+                <button type="button" class="btn-logout" id="btnLogout" title="Sair do sistema">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero hero-slim">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <span class="hero-kicker">Rastreabilidade</span>
+                <h1>Auditoria de operações</h1>
+                <p>Histórico completo das operações da locadora.</p>
+            </div>
+            <div class="hero-badge">
+                <i class="fa-solid fa-database"></i>
+                <span>Últimos 50 registros</span>
+            </div>
+        </div>
+        <div class="hero-road" aria-hidden="true"></div>
+    </section>
+
+    <main class="layout layout-single">
+        <section class="content">
+            <div class="panel">
+                <div class="panel-head">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Histórico de ações</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table-logs">
+                        <thead>
+                            <tr>
+                                <th class="col-num">#</th>
+                                <th class="col-acao">Ação</th>
+                                <th class="col-detalhes">Detalhes da operação</th>
+                                <th class="col-data">Data / Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaLogs">
+                            <!-- Os dados do MongoDB serão inseridos via logs.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><i class="fa-solid fa-steering-wheel"></i> <strong>LocaCar</strong> &copy; 2026 — Gestão de locação com MySQL &amp; MongoDB.</p>
+    </footer>
+
+    <script type="module" src="js/logs.js"></script>
+</body>
+</html>

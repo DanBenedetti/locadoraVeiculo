@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocaCar - Locadora de Veículos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><i class="fa-solid fa-steering-wheel"></i></span>
+                <span class="brand-name">Loca<strong>Car</strong></span>
+            </a>
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" id="searchInput" placeholder="Buscar por modelo, marca ou placa...">
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-car-side"></i> Frota</a>
+                <a href="logs.html" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Auditoria</a>
+                <a href="funcionarios.html" class="nav-link"><i class="fa-solid fa-users"></i> Funcionários</a>
+            </nav>
+            <div class="user-box">
+                <span class="user-avatar"><i class="fa-solid fa-user-tie"></i></span>
+                <span class="user-info">
+                    <span class="user-name" id="usuarioNome">...</span>
+                    <span class="user-cargo" id="usuarioCargo">Funcionário</span>
+                </span>
+                <button type="button" class="btn-logout" id="btnLogout" title="Sair do sistema">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <span class="hero-kicker">Gestão de frota</span>
+                <h1>Sua frota sob controle, do cadastro à devolução</h1>
+                <p>Cadastre veículos, acompanhe a disponibilidade em tempo real e registre cada operação com auditoria completa.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num" id="statTotal">0</span>
+                    <span class="stat-label"><i class="fa-solid fa-layer-group"></i> Total na frota</span>
+                </div>
+                <div class="stat disponivel">
+                    <span class="stat-num" id="statDisponiveis">0</span>
+                    <span class="stat-label"><i class="fa-solid fa-circle-check"></i> Disponíveis</span>
+                </div>
+                <div class="stat alugado">
+                    <span class="stat-num" id="statAlugados">0</span>
+                    <span class="stat-label"><i class="fa-solid fa-key"></i> Alugados</span>
+                </div>
+                <div class="stat manutencao">
+                    <span class="stat-num" id="statManutencao">0</span>
+                    <span class="stat-label"><i class="fa-solid fa-screwdriver-wrench"></i> Manutenção</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-road" aria-hidden="true"></div>
+    </section>
+
+    <main class="layout">
+        <aside class="side">
+            <section class="panel" id="form-panel">
+                <div class="panel-head">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Novo veículo</span>
+                </div>
+                <form id="formVeiculo" class="veiculo-form">
+                    <div class="field field-full">
+                        <label for="modeloVeiculo">Modelo</label>
+                        <input type="text" id="modeloVeiculo" required placeholder="Ex: Corolla XEi">
+                    </div>
+                    <div class="field">
+                        <label for="marcaVeiculo">Marca</label>
+                        <input type="text" id="marcaVeiculo" required placeholder="Ex: Toyota">
+                    </div>
+                    <div class="field">
+                        <label for="placaVeiculo">Placa</label>
+                        <input type="text" id="placaVeiculo" required maxlength="8" placeholder="ABC1D23">
+                    </div>
+                    <div class="field">
+                        <label for="precoDiaria">Diária (R$)</label>
+                        <input type="number" id="precoDiaria" step="0.01" required placeholder="Ex: 150.00">
+                    </div>
+                    <div class="field">
+                        <label for="statusVeiculo">Status inicial</label>
+                        <select id="statusVeiculo">
+                            <option value="Disponível" selected>Disponível</option>
+                            <option value="Alugado">Alugado</option>
+                            <option value="Manutenção">Manutenção</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary field-full">
+                        <i class="fa-solid fa-floppy-disk"></i> Salvar na frota
+                    </button>
+                </form>
+            </section>
+        </aside>
+
+        <section class="content">
+            <div class="content-head">
+                <h2><i class="fa-solid fa-car-side"></i> Frota cadastrada</h2>
+                <span class="counter" id="totalVeiculos">0 veículos</span>
+            </div>
+            <div class="fleet-grid" id="veiculosGrid">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><i class="fa-solid fa-steering-wheel"></i> <strong>LocaCar</strong> &copy; 2026 — Gestão de locação com MySQL &amp; MongoDB.</p>
+    </footer>
+
+    <script type="module" src="js/frota.js"></script>
+</body>
+</html>
